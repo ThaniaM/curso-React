@@ -1,12 +1,16 @@
-function TodoItem(props) {
-  return(
-    <li>
-      <span>V {props.completed}</span> {/*  marcar como completado */}
-      <p>{props.text}</p>
-      <span>X</span>
-    </li>
-  );
-}
+import './TodoItem.css';
 
-export { TodoItem};
+function TodoItem(props){
+  return(
+    <li className="TodoItem">
+      <span className={`Icon Icon-check ${props.completed&&"Icon-check--active"}`}>
+        V
+      </span>
+      <p className={`TodoItem-p ${props.completed&&"TodoItem-p--complete"}`}>{props.text}</p>
+      <span className="Icon Icon-delete">
+        X
+      </span>
+    </li> 
+  );}
+export{TodoItem};
 /* hacer el export nombrados */
