@@ -28,7 +28,7 @@ function App() { //los componentes inician con mayuscula
       const todoText = todo.text.toLowerCase(); /* convierte todo a minisculas */
       const searchText = searchValue.toLowerCase();
 
-    return todoText.includes(searchValue);
+    return todoText.includes(searchText);
   }
   );
   console.log('Los usuarios buscan todos de '+ searchValue);
