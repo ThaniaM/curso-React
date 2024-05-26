@@ -20,7 +20,17 @@ function App() { //los componentes inician con mayuscula
   /* las variables se declaran con const */
   const completedTodos = todos.filter(todo => !!todo.completed).length;/* recibimos un todo y debolvemos un completed en true o en false, le ponemos la doble negacion para obtener positivo o negativo */
   const totalTodos = todos.length; /* total de tareas */
+  /* filtra los resultados basado en lo que el usuaio escribe tomando como referencia el valor ya guardado anteriormente */
 
+  /* toLowerCase() convierte todo a minisculas */
+  const searchedTodos = todos.filter(
+    (todo) => {
+      const todoText = todo.text.toLowerCase(); /* convierte todo a minisculas */
+      const searchText = searchValue.toLowerCase();
+
+    return todoText.includes(searchValue);
+  }
+  );
   console.log('Los usuarios buscan todos de '+ searchValue);
 
   return ( //jsx -> javaScript y html
@@ -33,7 +43,7 @@ function App() { //los componentes inician con mayuscula
       />
       <TodoList>
         {/* insertamos el componente de react dentro de otro */}
-        {defaultTodos.map(todo => (
+        {searchedTodos.map(todo => (
           <TodoItem key={todo.text} text={todo.text} completed={todo.completed}/>
         ))}
       </TodoList>
