@@ -25,7 +25,7 @@ function App() { //los componentes inician con mayuscula
 
   return ( //jsx -> javaScript y html
     <>
-      <TodoCounter completed={completedTodos} total={25}/>
+      <TodoCounter completed={completedTodos} total={totalTodos}/>
       <TodoSearch
       /* enviando estado y actualizador de estado */
         searchValue={searchValue}
