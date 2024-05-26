@@ -1,15 +1,19 @@
+import React from 'react';
 import './TodoSearch.css'
 
-function TodoSearch(){
+function TodoSearch({
+  searchValue,setSearchValue, 
+}){
+  /* recibir la propiedadd searchvalue */
+  
+
   return(
     <input 
     placeholder="Cortar cebolla"  
     className="TodoSearch"
+    value={searchValue} /*  valor del estado conectado*/
     onChange={(event)=>{
-      console.log('Escribiste en el TodoSearch');
-      console.log(event);
-      console.log(event.target);
-      console.log(event.target.value);
+      setSearchValue(event.target.value);/* guardar la informacion que escriben los usuarios en el input en el estado y mostrarlo en el input de busqueda */
     }}
     />
   );
