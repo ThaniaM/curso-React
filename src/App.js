@@ -31,7 +31,23 @@ function App() { //los componentes inician con mayuscula
     return todoText.includes(searchText);
   }
   );
-  console.log('Los usuarios buscan todos de '+ searchValue);
+  const completeTodo = (text) => { 
+    const newTodos = [...todos];/* manda llamr el arreglo de los todos */
+    const todoIndex = newTodos.findIndex(/* identificamos el todo que tiene el texto en particular */
+      (todo) => todo.text === text 
+    ); 
+    newTodos[todoIndex].completed = !newTodos[todoIndex].completed;   /* podemos desmarcar las tareas  */
+    setTodos(newTodos); 
+  }
+
+  const deleteTodo = (text) =>  {
+    const newTodos = [...todos];/* manda llamr el arreglo de los todos */
+    const todoIndex = newTodos.findIndex(/* identificamos el todo que tiene el texto en particular */
+      (todo) => todo.text === text
+    ); 
+    newTodos.splice(todoIndex,1);
+    setTodos(newTodos);
+  }  
 
   return ( //jsx -> javaScript y html
     <>
@@ -44,7 +60,13 @@ function App() { //los componentes inician con mayuscula
       <TodoList>
         {/* insertamos el componente de react dentro de otro */}
         {searchedTodos.map(todo => (
-          <TodoItem key={todo.text} text={todo.text} completed={todo.completed}/>
+          <TodoItem 
+            key={todo.text} 
+            text={todo.text} 
+            completed={todo.completed} 
+            onComplete={() => completeTodo(todo.text)}
+            onDelete={() => deleteTodo(todo.text)}
+          />
         ))}
       </TodoList>
 
