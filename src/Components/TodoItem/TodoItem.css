@@ -41,7 +41,7 @@
 }
 
 .Icon-delete {
-  position: absolute;
+  position: static;
   top: -24px;
   right: 0
 }
